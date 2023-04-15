@@ -18,7 +18,6 @@ public class PaddleController : MonoBehaviour
         targetRelease = hinge.limits.min;
     }
 
-
     private void Update()
     {
         ReadInput();

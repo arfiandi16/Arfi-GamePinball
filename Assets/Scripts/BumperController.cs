@@ -18,6 +18,11 @@ public class BumperController : MonoBehaviour
         renderer = GetComponent<Renderer>();
         renderer.material.color = color;
         bolaRig = colliderBola.GetComponent<Rigidbody>();
+        int a = 1;
+        if (a > 5)
+        {
+
+        }
     }
     private void OnCollisionEnter(Collision collision)
     {
