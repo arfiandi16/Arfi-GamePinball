@@ -12,6 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/ModifiedScene.unity
     guid: b47959ea176ba59488a0bd66cb8db835
   - enabled: 1
-    path: Assets/Scenes/Test.unity
+    path: Assets/Scenes/Test_Bumper.unity
     guid: 5385fa64e9782b046ba9fbe43366f86c
   m_configObjects: {}

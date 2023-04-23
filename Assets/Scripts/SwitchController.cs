@@ -13,8 +13,11 @@ public class SwitchController : MonoBehaviour
     }
     public Collider bola;
     public Material offMaterial,onMaterial;
+    public AudioManager audioManager;
+    public VFXManager vfxManager;
+
     private SwitchState state;
-    private Renderer renderer;
+    private Renderer renderer; 
     void Start()
     { 
         renderer = GetComponent<Renderer>();
@@ -27,6 +30,10 @@ public class SwitchController : MonoBehaviour
         if(other == bola)
         {
             Toggle();
+            //Script dibawah dipakai apabila Bola akan mengeluarkan suara jika mengenai switch namun hanya dengan satu sfx, untuk yang dua sfx saya berikan didalam
+            //fungsi toggle()
+            //audioManager.PlaySFXSwitch(other.transform.position);
+            vfxManager.PlayVFXSwitch(other.transform.position);
         }
     }
 
@@ -37,12 +44,14 @@ public class SwitchController : MonoBehaviour
             state = SwitchState.On;
             renderer.material = onMaterial;
             StopAllCoroutines();
+            
         }
         else
         {
             state = SwitchState.Off;
             renderer.material = offMaterial;
             StartCoroutine(BlinkTimerStart(5));
+            
         }
     }
 
@@ -51,11 +60,15 @@ public class SwitchController : MonoBehaviour
     {
         if( state == SwitchState.On)
         {
-            Set(false);
+            //Saat bola menyalakan switch maka akan berbunyi
+            audioManager.PlaySFXSwitchEND(bola.transform.position);
+            Set(false); 
         }
         else
         {
-            Set(true);
+            //Saat bola mematikan switch maka akan berbunyi
+            audioManager.PlaySFXSwitch(bola.transform.position);
+            Set(true); 
         }
     }
     private IEnumerator Blink(int times)

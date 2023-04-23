@@ -9,6 +9,9 @@ public class BumperController : MonoBehaviour
 
     public Collider colliderBola;
     public float multiplier;
+    public AudioManager audioManager;
+    public VFXManager vfxManager;
+
     Rigidbody bolaRig;
     public Color color;
 
@@ -26,7 +29,7 @@ public class BumperController : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.collider == colliderBola)
+        if (collision.collider == colliderBola)
         {
             bolaRig.velocity *= multiplier;
 
@@ -34,7 +37,10 @@ public class BumperController : MonoBehaviour
             {
                 animator.SetTrigger("hit");
             }
-            
+
+            audioManager.PlaySFXBumper(collision.transform.position);
+            vfxManager.PlayVFXBumper(collision.transform.position);
         }
+    
     }
 }
