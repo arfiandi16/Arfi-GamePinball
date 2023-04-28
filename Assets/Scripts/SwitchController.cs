@@ -15,6 +15,8 @@ public class SwitchController : MonoBehaviour
     public Material offMaterial,onMaterial;
     public AudioManager audioManager;
     public VFXManager vfxManager;
+    public ScoreManager scoreManager;
+    public float score;
 
     private SwitchState state;
     private Renderer renderer; 
@@ -34,6 +36,7 @@ public class SwitchController : MonoBehaviour
             //fungsi toggle()
             //audioManager.PlaySFXSwitch(other.transform.position);
             vfxManager.PlayVFXSwitch(other.transform.position);
+            scoreManager.AddScore(score);
         }
     }
 

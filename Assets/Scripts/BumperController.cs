@@ -11,6 +11,8 @@ public class BumperController : MonoBehaviour
     public float multiplier;
     public AudioManager audioManager;
     public VFXManager vfxManager;
+    public ScoreManager scoreManager;
+    public float score;
 
     Rigidbody bolaRig;
     public Color color;
@@ -40,6 +42,8 @@ public class BumperController : MonoBehaviour
 
             audioManager.PlaySFXBumper(collision.transform.position);
             vfxManager.PlayVFXBumper(collision.transform.position);
+
+            scoreManager.AddScore(score);
         }
     
     }
